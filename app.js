@@ -1,3 +1,14 @@
+//Enter button
+
+
+document.getElementById("search").addEventListener("keypress", function(event) {
+  
+  if (event.key == 'Enter')
+  document.getElementById("search-btn").click();
+});
+
+
+
 const imagesArea = document.querySelector('.images');
 const gallery = document.querySelector('.gallery');
 const galleryHeader = document.querySelector('.gallery-header');
@@ -38,22 +49,22 @@ const getImages = (query) => {
 let slideIndex = 0;
 const selectItem = (event, img) => {
   let element = event.target;
-  element.classList.add('added');
+  element.classList.toggle('added');
  
-  let item = sliders.indexOf(img);
-  if (item === -1) {
-    sliders.push(img);
-  } else {
-    alert('Hey, Already added !')
-  }
+  // let item = sliders.indexOf(img);
+  // if (item === -1) {
+  //   sliders.push(img);
+  // } else {
+  //   alert('Hey, Already added !')
+  // }
 }
 var timer
 const createSlider = () => {
   // check slider image length
-  if (sliders.length < 2) {
-    alert('Select at least 2 image.')
-    return;
-  }
+  // if (sliders.length < 10) {
+  //   alert('Select at least 2 image.')
+  //   return;
+  // }
   // crate slider previous next area
   sliderContainer.innerHTML = '';
   const prevNext = document.createElement('div');
@@ -66,7 +77,7 @@ const createSlider = () => {
   sliderContainer.appendChild(prevNext)
   document.querySelector('.main').style.display = 'block';
   // hide image aria
-  imagesArea.style.display = 'none';
+  imagesArea.style.display = 'block';
   const duration = document.getElementById('duration').value || 1000;
   sliders.forEach(slide => {
     let item = document.createElement('div')
@@ -119,4 +130,8 @@ searchBtn.addEventListener('click', function () {
 
 sliderBtn.addEventListener('click', function () {
   createSlider()
+ 
+  
+
+
 })
